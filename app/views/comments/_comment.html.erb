@@ -1,0 +1,10 @@
+<% @comments.each do |c| %>
+    <div style="padding: 20px">
+        <p>
+            <%= c.user %> commented: <%= c.comment %>
+            <% if current_user && (c.user===current_user.email || @blog.author===current_user.email) %>
+            <%= link_to "Delete", blog_comment_path(c.blog_id, c.id), method: :delete , :class => 'btn btn-default'  %>
+            <% end %>
+        </p>
+    </div>
+<% end %>

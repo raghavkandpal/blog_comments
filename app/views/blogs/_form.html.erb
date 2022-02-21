@@ -1,0 +1,17 @@
+<div style="padding: 20px">
+  <%= form_with(model: blog, local: true) do |form| %>
+    <div class="field">
+      <%= form.label :title %><br>
+      <%= form.text_field :title %>
+    </div>
+    <br>
+    <div class="field">
+      <%= form.label :body %><br>
+      <%= form.text_area :body %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div> 
+  <% end %>
+</div> 

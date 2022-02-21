@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Blog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <style>
+    html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
+      .float-container {
+        padding: 20px;
+    }
+    .float-child {
+        width: 50%;
+        float: left;
+        padding: 20px;
+    }
+    </style>
+  </head>
+
+  <body>
+  <div class="float-container">
+  <% if current_user %> 
+  <div class="float-child">
+  <h2><%= link_to "Blog", root_path %></h2>
+  </div>
+  <div class="float-child" align="right"> 
+      <p>
+        <%= link_to "New Post", add_path %>
+        <%= link_to "My Posts", myposts_path %>
+        <%= current_user.email %>
+        <br>
+        <%= link_to "Log out", logout_path, method: "delete" %> 
+      </p> 
+    </div>
+    <% else %> 
+    <div class="float-child" >
+    <h2><%= link_to "Blog", root_path %></h2>
+    </div>
+    <div class="float-child" align="right">
+    <p>
+      <%= link_to "Login", login_path %></a>
+      <br>
+      <%= link_to "Signup", signup_path %></a>
+    </p> 
+    </div>
+  <% end %> 
+</div>
+<%= yield %>
+  </body>
+</html>

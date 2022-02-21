@@ -1,0 +1,9 @@
+<% @blog.each do |blog| %>
+    <div class="well" style="padding: 20px">
+        <h4><%= blog.title %></h4>
+        <p><%= blog.body %><br>
+        <%= link_to "Read more", blog_path(blog), :class => 'btn btn-default' %> 
+        </p>
+        
+    </div>
+<% end %>

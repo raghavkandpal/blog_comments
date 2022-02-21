@@ -1,0 +1,18 @@
+<div style="padding: 20px">
+    <h4><%= @blog.title %></h4>
+    <p><%= @blog.body %></p>
+    <p>Written by <%= @blog.author %> | Created on <%= @blog.created_at %><p>
+    <hr>
+    <% if current_user && @blog.author==current_user.email %> 
+        <%= link_to "Edit", edit_blog_path(@blog), :class => 'btn btn-default' %>
+        <%= link_to "Delete", blog_path(@blog), method: :delete, data: {confirm: 'Are you sure?'}, :class => 'btn btn-default' %>
+    <% end %>
+<div> 
+
+<p>
+  <strong>Comments:</strong>
+</p>
+<%= render 'comments/comment' %>
+<% if current_user %>
+  <%= render 'comments/form' %>
+<% end %>
